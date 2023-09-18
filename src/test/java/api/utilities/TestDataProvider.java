@@ -7,8 +7,8 @@ public class TestDataProvider {
 	@DataProvider(name = "AllUserData")
 	public String[][] getAllData() throws IOException {
 
-//		String path = System.getProperty("user.dir") + "//testData//CreationData.xlsx";
-		String path = "C://Users//bhand//Desktop//someJAVA//PetStoreautomation//testData//CreationData.xlsx";
+		String path = System.getProperty("user.dir") + "//testData//CreationData.xlsx";
+//		String path = "C://Users//bhand//Desktop//someJAVA//PetStoreautomation//testData//CreationData.xlsx";
 		XLReader xl = new XLReader(path);
 
 		int rownum = xl.getRowCount("userdata");
