@@ -10,8 +10,8 @@ import api.endpoints.UserEndPoints;
 import api.payloadpojo.User;
 import io.restassured.response.Response;
 
-public class UserTests {
-	
+public class UserTest {
+	// In this class we are testing using route class for urls
 	Faker faker;
 	User userPayload;
 	
@@ -57,7 +57,7 @@ public class UserTests {
 		
 	}
 	
-	@Test(priority=3)
+	@Test(priority=4)
 	public void testDeleteUserByName() {
 		Response response = UserEndPoints.deleteUser(this.userPayload.getUsername());
 		Assert.assertEquals(response.getStatusCode(), 200);

@@ -1,23 +1,23 @@
 package api.endpoints;
+
 import static io.restassured.RestAssured.given;
+
+import java.util.ResourceBundle;
 
 import api.payloadpojo.User;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-//Used to perform CRUD operation on users
-
-public class UserEndPoints {
+public class UserEndPointWithPropertiesFile {
+	
 	
 	public static Response createUser(User payload) {
-		System.out.println(Routes.post_url);
 		Response response = given()
 		.contentType(ContentType.JSON)
 		.accept(ContentType.JSON)
 		.body(payload)
 		.when()
-		.post(Routes.post_url);
-		
+		.post(getUrl().getString("post_url"));
 		return response;
 	}
 	
@@ -25,7 +25,7 @@ public class UserEndPoints {
 		Response response = given()
 		.pathParam("username", userName)
 		.when()
-		.get(Routes.get_url);
+		.get(getUrl().getString("get_url"));
 
 		return response;
 	}
@@ -37,7 +37,7 @@ public class UserEndPoints {
 		.accept(ContentType.JSON)
 		.body(payload)
 		.when()
-		.put(Routes.update_url);
+		.put(getUrl().getString("update_url"));
 		
 		return response;
 	}
@@ -46,8 +46,13 @@ public class UserEndPoints {
 		Response response = given()
 		.pathParam("username", userName)
 		.when()
-		.delete(Routes.delete_url);
+		.delete(getUrl().getString("delete_url"));
 		
 		return response;
+	}
+	
+	static ResourceBundle getUrl() {
+		ResourceBundle rbroute = ResourceBundle.getBundle("routes"); 
+		return rbroute;
 	}
 }

@@ -11,7 +11,7 @@ import api.utilities.TestDataProvider;
 import io.restassured.response.Response;
 
 public class UserDataTest {
-	
+	// In this class we are testing using data provider which is fed by xlsx sheet
 	@Test(priority=1, dataProvider = "AllUserData", dataProviderClass = TestDataProvider.class)
 	public void testPostUser(String userId, String userName, String fname, String lname, 
 			String useremail, String password, String phone){
